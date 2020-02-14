@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ADCoordinator_Example' do
+  pod 'ADCoordinator', :path => '../'
+
+  target 'ADCoordinator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

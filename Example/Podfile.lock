@@ -1,0 +1,16 @@
+PODS:
+  - ADCoordinator (0.1.0)
+
+DEPENDENCIES:
+  - ADCoordinator (from `../`)
+
+EXTERNAL SOURCES:
+  ADCoordinator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ADCoordinator: 6fe51c0b7e6b1c92e3d127a3d7c5fe3d2dcbbe21
+
+PODFILE CHECKSUM: 2d069ef7b332a46f997d4a4d738a0087d772b964
+
+COCOAPODS: 1.8.4
