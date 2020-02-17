@@ -1,9 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = 'ADCoordinator'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ADCoordinator.'
+  s.summary          = 'An implementation of the coordinator pattern used at Fabernovel.'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Coordinators are a powerful pattern to decouple the navigation from the view controllers in an app.
+This library provides a base class `Coordinator` and a mecanism to retain and release coordinators easily.
                        DESC
   s.homepage         = 'https://github.com/faberNovel/Coordinator'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
