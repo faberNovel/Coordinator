@@ -7,6 +7,16 @@ lane :tests do
   unit_tests
 end
 
+desc "Linting"
+lane :lint do
+  swiftlint(
+  	mode: :lint,
+  	config_file: ".swiftlint.yml",
+  	strict: true,
+  	executable: "Pods/SwiftLint/swiftlint"
+  )
+end
+
 #####################################################
 # Private
 #####################################################

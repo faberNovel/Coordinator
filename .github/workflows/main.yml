@@ -18,3 +18,6 @@ jobs:
     - name: Build and test
       working-directory: ./Example
       run: bundle exec fastlane tests
+    - name: Swiftlint
+      working-directory: ./Example
+      run: bundle exec fastlane lint

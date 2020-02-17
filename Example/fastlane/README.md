@@ -20,6 +20,11 @@ or alternatively using `brew cask install fastlane`
 fastlane tests
 ```
 Run all unit tests
+### lint
+```
+fastlane lint
+```
+Linting
 
 ----
 

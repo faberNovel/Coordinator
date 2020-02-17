@@ -1,8 +1,14 @@
 PODS:
   - ADCoordinator (0.1.0)
+  - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - ADCoordinator (from `../`)
+  - SwiftLint (~> 0.39)
+
+SPEC REPOS:
+  trunk:
+    - SwiftLint
 
 EXTERNAL SOURCES:
   ADCoordinator:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADCoordinator: 6fe51c0b7e6b1c92e3d127a3d7c5fe3d2dcbbe21
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: 2d069ef7b332a46f997d4a4d738a0087d772b964
+PODFILE CHECKSUM: 0a7ea29d95fcbce489a7c5433e076763e3ec6ce9
 
 COCOAPODS: 1.8.4
