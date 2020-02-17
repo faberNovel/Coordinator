@@ -21,3 +21,5 @@ jobs:
     - name: Swiftlint
       working-directory: ./Example
       run: bundle exec fastlane lint
+    - name: Pod lib lint
+      run: pod lib lint --allow-warnings
