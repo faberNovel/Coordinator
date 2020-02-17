@@ -14,6 +14,9 @@ final class DeallocObserver {
 
     private let callback: () -> Void
 
+    /**
+     * - parameter callback: The callback called when self is deallocated
+     */
     init(callback: @escaping () -> Void) {
         self.callback = callback
     }
