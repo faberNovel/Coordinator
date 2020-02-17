@@ -1,3 +1,4 @@
+platform :ios, '10.0'
 use_frameworks!
 
 target 'ADCoordinator_Example' do
@@ -6,7 +7,5 @@ target 'ADCoordinator_Example' do
 
   target 'ADCoordinator_Tests' do
     inherit! :search_paths
-
-    
   end
 end
