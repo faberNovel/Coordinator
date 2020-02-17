@@ -34,7 +34,7 @@ open class Coordinator {
      * That means the parent do not keep any reference to self, and self can be deallocated.
      */
     public func bindToLifecycle(of nativeNavigator: NativeNavigatorObject) {
-        parent?.registerDeallocCallback(of: nativeNavigator, to: self)
+        parent?.removeChild(self, onDeallocationOf: nativeNavigator)
     }
 }
 
@@ -75,13 +75,15 @@ extension Coordinator {
     /**
      * Listens to deallocation of native navigator and remove child when it's deallocated
      * - parameter nativeNavigator: The object to listen deallocation to
-     * - parameter child: The coordinator that must be removed from children once the native navigator is deallocated
+     * - parameter coordinator: The coordinator that must be removed from children once the native
+     * navigator is deallocated
      * - note: We listen to nativeNavigator deallocation and remove child reference from self once it happens.
      */
-    private func registerDeallocCallback(of nativeNavigator: NativeNavigatorObject, to child: Coordinator) {
-        nativeNavigator.registerCallbackForDealloc { [weak child, weak self] in
-            if let childToRemove = child {
-                self?.removeChild(childToRemove)
+    func removeChild(_ coordinator: Coordinator,
+                     onDeallocationOf nativeNavigator: NativeNavigatorObject) {
+        nativeNavigator.registerCallbackForDealloc { [weak coordinator, weak self] in
+            if let child = coordinator {
+                self?.removeChild(child)
             }
         }
     }
