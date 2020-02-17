@@ -1,0 +1,23 @@
+#####################################################
+# Public
+#####################################################
+
+desc "Run all unit tests"
+lane :tests do
+  unit_tests
+end
+
+#####################################################
+# Private
+#####################################################
+
+desc "Runs all unit tests"
+private_lane :unit_tests do
+  scan(
+    workspace: "ADCoordinator.xcworkspace",
+    configuration: "Debug",
+    scheme: "ADCoordinator-Example",
+    clean: true,
+    devices: ["iPhone 8"]
+  )
+end

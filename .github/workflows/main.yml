@@ -6,9 +6,6 @@ jobs:
   build:
 
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 8']
 
     steps:
     - uses: actions/checkout@v2
@@ -20,7 +17,4 @@ jobs:
       run: bundle exec pod install
     - name: Build and test
       working-directory: ./Example
-      run: bundle exec fastlane scan --destination "${destination}"
-      env:
-          destination: ${{ matrix.destination }}
-
+      run: bundle exec fastlane tests
