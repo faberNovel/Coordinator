@@ -12,16 +12,37 @@ import XCTest
 class NativeNavigatorTests: XCTestCase {
 
     func testDeallocNativeNavigator() {
-        // Given
-        var viewController = UIViewController()
+        autoreleasepool {
+            // Given
+            var viewController = UIViewController()
 
-        let expectation = self.expectation(description: "view controller is deallocated")
-        viewController.registerCallbackForDealloc {
-            expectation.fulfill()
+            let expectation = self.expectation(description: "view controller is deallocated")
+            viewController.registerCallbackForDealloc {
+                expectation.fulfill()
+            }
+
+            // When
+            viewController = UIViewController() // dealloc previous instance
         }
+        // Then
+        waitForExpectations(timeout: 0.1)
+    }
 
-        // When
-        viewController = UIViewController() // dealloc previous instance
+    func testRemoveDeallocObserver() {
+        autoreleasepool {
+            // Given
+            var viewController = UIViewController()
+
+            let expectation = self.expectation(description: "view controller is deallocated")
+            expectation.isInverted = true
+            viewController.registerCallbackForDealloc {
+                expectation.fulfill()
+            }
+
+            // When
+            viewController.removeCallbackForDealloc()
+            viewController = UIViewController() // dealloc previous instance
+        }
 
         // Then
         waitForExpectations(timeout: 0.1)
