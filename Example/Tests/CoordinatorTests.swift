@@ -9,8 +9,6 @@
 import XCTest
 import ADCoordinator
 
-class TestViewController: UIViewController {}
-
 class ParentCoordinator: Coordinator {}
 
 class ChildCoordinator: Coordinator {}
@@ -66,7 +64,7 @@ class CoordinatorTests: XCTestCase {
     }
 
     func testBindToLifecycle() {
-        var viewController = TestViewController()
+        var viewController = UIViewController()
         let parent = ParentCoordinator()
         let child = ChildCoordinator()
         parent.addChild(child)
@@ -74,7 +72,7 @@ class CoordinatorTests: XCTestCase {
         child.bindToLifecycle(of: viewController)
 
         // When
-        viewController = TestViewController() // dealloc previous instance
+        viewController = UIViewController() // dealloc previous instance
 
         // Then
         XCTAssertTrue(parent.children.isEmpty)
