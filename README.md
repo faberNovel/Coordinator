@@ -24,7 +24,7 @@ pod 'ADCoordinator'
 
 ## Architecture
 
-Each coordinator is instanciated with a graphical context **it does not own**. For instance a coordinator can be initialized with a `UIWindow` or `UINavigationController`.
+Each coordinator is instantiated with a graphical context **it does not own**. For instance a coordinator can be initialized with a `UIWindow` or `UINavigationController`.
 
 ```swift
 class ApplicationCoordinator: Coordinator {
@@ -99,7 +99,7 @@ Either we push a view controller *horizontally* (meaning on the same navigation 
 
 ### Horizontally
 
-When the coordinator receives a callback from the view controller on screen to navigates, the simplest way is just to create a new view controller and push it onto the navigation stack.
+When the coordinator receives a callback from the view controller on screen to navigate, the simplest way is just to create a new view controller and push it onto the navigation stack.
 
 ```swift
 class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
@@ -182,7 +182,7 @@ class Coordinator {
 
 ### Automatic child removal
 
-Since iOS 13, a new modal presentation has been introduced. The presentation do not cover the entire screen, and more importantly, the user can dismiss the modal swipping down, without any callback to the view controller.
+Since iOS 13, a new modal presentation has been introduced. The presentation does not cover the entire screen, and more importantly, the user can dismiss the modal swipping down, without any callback to the view controller.
 
 We saw earlier that each modal presented leads to the creation of a new coordinator. Once the modal is dismissed, the associated coordinator should be released. If the user taps a button, an action is associated to this button, and the view controller can forward the intent to the right coordinator to call `removeChild`. But if the user swipes down a modal on iOS 13, no action is triggered.
 
