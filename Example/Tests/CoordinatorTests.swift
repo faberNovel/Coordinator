@@ -1,0 +1,82 @@
+//
+//  CoordinatorTests.swift
+//  ADCoordinator_Example
+//
+//  Created by Pierre Felgines on 17/02/2020.
+//  Copyright © 2020 CocoaPods. All rights reserved.
+//
+
+import XCTest
+import ADCoordinator
+
+class TestViewController: UIViewController {}
+
+class ParentCoordinator: Coordinator {}
+
+class ChildCoordinator: Coordinator {}
+
+class CoordinatorTests: XCTestCase {
+
+    func testAddChild() {
+        // Given
+        let parent = ParentCoordinator()
+        let child = ChildCoordinator()
+        XCTAssertTrue(parent.children.isEmpty)
+        XCTAssertNil(child.parent)
+
+        // When
+        parent.addChild(child)
+
+        // Then
+        XCTAssertEqual(parent.children, [child])
+        XCTAssertEqual(child.parent, parent)
+    }
+
+    func testChildDoNotRetainParent() {
+        // Given
+        var parent = ParentCoordinator()
+        let child = ChildCoordinator()
+        parent.addChild(child)
+        XCTAssertEqual(parent.children, [child])
+        XCTAssertEqual(child.parent, parent)
+
+        // When
+        parent = ParentCoordinator() // dealloc previous instance
+
+        // Then
+        XCTAssertNil(child.parent)
+    }
+
+    func testRemoveChild() {
+        // Given
+        let parent = ParentCoordinator()
+        let child1 = ChildCoordinator()
+        let child2 = ChildCoordinator()
+        parent.addChild(child1)
+        parent.addChild(child2)
+        XCTAssertEqual(parent.children, [child1, child2])
+
+        // When
+        parent.removeChild(child1)
+
+        // Then
+        XCTAssertEqual(parent.children, [child2])
+        XCTAssertNil(child1.parent)
+        XCTAssertEqual(child2.parent, parent)
+    }
+
+    func testBindToLifecycle() {
+        var viewController = TestViewController()
+        let parent = ParentCoordinator()
+        let child = ChildCoordinator()
+        parent.addChild(child)
+
+        child.bindToLifecycle(of: viewController)
+
+        // When
+        viewController = TestViewController() // dealloc previous instance
+
+        // Then
+        XCTAssertTrue(parent.children.isEmpty)
+    }
+}

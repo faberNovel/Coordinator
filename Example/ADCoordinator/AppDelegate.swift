@@ -12,11 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var applicationCoordinator: ApplicationCoordinator?
 
     func application(_ application: UIApplication,
                      // swiftlint:disable:next discouraged_optional_collection
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+
+        let navigationController = UINavigationController()
+        applicationCoordinator = ApplicationCoordinator(navigationController: navigationController)
+        applicationCoordinator?.start()
+
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
         return true
     }
 }
