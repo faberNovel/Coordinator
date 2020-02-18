@@ -12,13 +12,20 @@ import Foundation
  */
 final class DeallocObserver {
 
-    var callback: () -> Void
+    private var callback: () -> Void
 
     /**
      * - parameter callback: The callback called when self is deallocated
      */
     init(callback: @escaping () -> Void) {
         self.callback = callback
+    }
+
+    /**
+    * Removes the current callback
+    */
+    func invalidate() {
+        callback = {}
     }
 
     deinit {
