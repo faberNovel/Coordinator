@@ -12,7 +12,7 @@ import Foundation
  */
 final class DeallocObserver {
 
-    private let callback: () -> Void
+    var callback: () -> Void
 
     /**
      * - parameter callback: The callback called when self is deallocated

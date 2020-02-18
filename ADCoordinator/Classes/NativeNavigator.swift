@@ -42,4 +42,11 @@ extension NativeNavigator where Self: NSObject {
     func registerCallbackForDealloc(_ callback: @escaping () -> Void) {
         deallocObserver = DeallocObserver(callback: callback)
     }
+
+    /**
+    * Removes the current deallocation observer
+    */
+    func removeCallbackForDealloc() {
+        deallocObserver?.callback = {}
+    }
 }

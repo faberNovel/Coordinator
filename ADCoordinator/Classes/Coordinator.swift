@@ -25,6 +25,11 @@ open class Coordinator {
      */
     public private(set) weak var parent: Coordinator?
 
+    /**
+    * Stores the current object observed for deallocation
+    */
+    private weak var boundNativeNavigator: NativeNavigatorObject?
+
     public init() {}
 
     /**
@@ -34,6 +39,8 @@ open class Coordinator {
      * That means the parent do not keep any reference to self, and self can be deallocated.
      */
     public func bindToLifecycle(of nativeNavigator: NativeNavigatorObject) {
+        boundNativeNavigator?.removeCallbackForDealloc()
+        boundNativeNavigator = nativeNavigator
         parent?.removeChild(self, onDeallocationOf: nativeNavigator)
     }
 }

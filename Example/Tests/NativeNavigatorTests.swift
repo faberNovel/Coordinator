@@ -27,4 +27,24 @@ class NativeNavigatorTests: XCTestCase {
         // Then
         waitForExpectations(timeout: 0.1)
     }
+
+    func testRemoveDeallocObserver() {
+        autoreleasepool {
+            // Given
+            var viewController = UIViewController()
+
+            let expectation = self.expectation(description: "view controller is deallocated")
+            expectation.isInverted = true
+            viewController.registerCallbackForDealloc {
+                expectation.fulfill()
+            }
+
+            // When
+            viewController.removeCallbackForDealloc()
+            viewController = UIViewController() // dealloc previous instance
+        }
+
+        // Then
+        waitForExpectations(timeout: 0.1)
+    }
 }
