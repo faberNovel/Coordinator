@@ -96,10 +96,11 @@ def bump_podspec(target_version)
     path: podspec_path,
     version_number: target_version
   )
+  sh('cd ../Example && bundle exec pod install')
 
   git_add(path: podspec_path)
   git_commit(
-    path: podspec_path,
+    path: [podspec_path, "Example/Podfile.lock"],
     message: "Bump to #{target_version}"
   )
 end
