@@ -23,7 +23,7 @@ extension NativeNavigator where Self: NSObject {
             ) as? DeallocObserver
         }
         set {
-            guard deallocObserver == nil else {
+            guard deallocObserver == nil || newValue == nil else {
                 preconditionFailure("DeallocObserver is already set")
             }
             objc_setAssociatedObject(
@@ -48,5 +48,6 @@ extension NativeNavigator where Self: NSObject {
     */
     func removeCallbackForDealloc() {
         deallocObserver?.invalidate()
+        deallocObserver = nil
     }
 }

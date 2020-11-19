@@ -23,7 +23,13 @@ open class Coordinator {
     /**
      * Stores a weak reference to the parent coordinator.
      */
-    public private(set) weak var parent: Coordinator?
+    public private(set) weak var parent: Coordinator? {
+        didSet {
+            guard let nativeNavigator = boundNativeNavigator else { return }
+            nativeNavigator.removeCallbackForDealloc()
+            parent?.removeChild(self, onDeallocationOf: nativeNavigator)
+        }
+    }
 
     /**
     * Stores the current object observed for deallocation

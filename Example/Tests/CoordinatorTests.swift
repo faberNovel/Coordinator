@@ -102,4 +102,28 @@ class CoordinatorTests: XCTestCase {
         // Then
         XCTAssertEqual(parent.children, [child])
     }
+
+    func testBindToLifecycleWithParentChange() {
+        // Given
+        let parent1 = ParentCoordinator()
+        let parent2 = ParentCoordinator()
+        let child = ChildCoordinator()
+        parent1.addChild(child)
+
+        autoreleasepool {
+            var viewController = UIViewController()
+
+            child.bindToLifecycle(of: viewController)
+
+            // When
+            parent1.removeChild(child)
+            parent2.addChild(child)
+
+            viewController = UIViewController() // dealloc previous instance
+        }
+
+        // Then
+        XCTAssertTrue(parent1.children.isEmpty)
+        XCTAssertTrue(parent2.children.isEmpty)
+    }
 }
