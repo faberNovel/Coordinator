@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.1] - 2020-11-19
+
 ### Fixed
 
 - Fix deallocation handling when changing parent [#4](https://github.com/faberNovel/Coordinator/pull/3) by [alexandre-pod](https://github.com/alexandre-pod)
