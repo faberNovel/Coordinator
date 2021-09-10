@@ -1,5 +1,5 @@
 PODS:
-  - ADCoordinator (1.0.1)
+  - ADCoordinator (1.0.2)
   - SwiftLint (0.39.1)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ADCoordinator: 8c0703c303181554ef4f3f20c750651f0a97e219
+  ADCoordinator: e8e093c032bffdd2a2a7ce4e71acd23b7c9b21c3
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
 PODFILE CHECKSUM: 19c79d788c2661a1c97effe1e51ebc195f849213
