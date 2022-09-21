@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- Remove support for iOS 10, 11 and 12
+- Remove support for tvOS 10, 11 and 12
+
 ## [1.0.2] - 2021-09-10
 
 - Add SPM compatibility
