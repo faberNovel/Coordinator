@@ -10,6 +10,7 @@ import UIKit
 
 extension UIWindow: NativeNavigator {}
 extension UIViewController: NativeNavigator {}
+@MainActor open class MainActorCoordinator: Coordinator {}
 
 public typealias NativeNavigatorObject = NativeNavigator & NSObject
 
