@@ -43,13 +43,13 @@ The coordinator is then responsible to create and display view controllers insid
 As a convention, we use a method named `start` to tell the coordinator to create its first view controller:
 
 ```swift
-class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
+class ApplicationCoordinator: Coordinator, MainViewControllerDelegate {
     ...
 
     // MARK: - Public
 
     func start() {
-        let viewController = MasterViewController()
+        let viewController = MainViewController()
         // the view controller can notify the coordinator when it needs to navigate
         viewController.delegate = self
         // display the first view controller in the navigation controller
@@ -102,12 +102,12 @@ Either we push a view controller *horizontally* (meaning on the same navigation 
 When the coordinator receives a callback from the view controller on screen to navigate, the simplest way is just to create a new view controller and push it onto the navigation stack.
 
 ```swift
-class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
+class ApplicationCoordinator: Coordinator, MainViewControllerDelegate {
     ...
 
-    // MARK: - MasterViewControllerDelegate
+    // MARK: - MainViewControllerDelegate
 
-    func masterViewControllerDidRequestPush() {
+    func mainViewControllerDidRequestPush() {
         let detailViewController = DetailViewController()
         navigationController.pushViewController(detailViewController, animated: true)
     }
@@ -143,12 +143,12 @@ class DetailCoordinator: Coordinator {
 This is always the same idea, the coordinator is given a graphical context it does not own and perform  actions inside it. This is the parent coordinator that creates the graphical context and the child coordinator.
 
 ```swift
-class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
+class ApplicationCoordinator: Coordinator, MainViewControllerDelegate {
     ...
 
-    // MARK: - MasterViewControllerDelegate
+    // MARK: - MainViewControllerDelegate
 
-    func masterViewControllerDidRequestPresent() {
+    func mainViewControllerDidRequestPresent() {
         // The new graphical context for the child coordinator
         let navigationController = UINavigationController()
         // Create the child coordinator

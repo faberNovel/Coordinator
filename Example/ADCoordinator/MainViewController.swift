@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  MainViewController.swift
 //  ADCoordinator_Example
 //
 //  Created by Pierre Felgines on 17/02/2020.
@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 
 @MainActor
-protocol MasterViewControllerDelegate: AnyObject {
-    func masterViewControllerDidRequestPresent()
-    func masterViewControllerDidRequestPush()
+protocol MainViewControllerDelegate: AnyObject {
+    func mainViewControllerDidRequestPresent()
+    func mainViewControllerDidRequestPush()
 }
 
-class MasterViewController: UIViewController {
+class MainViewController: UIViewController {
 
-    weak var delegate: MasterViewControllerDelegate?
+    weak var delegate: MainViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        title = "Master"
+        title = "Main"
 
         let pushButton = UIButton(type: .system)
         pushButton.setTitle("Push detail", for: .normal)
@@ -47,10 +47,10 @@ class MasterViewController: UIViewController {
     // MARK: - Private
 
     @objc private func pushSelected() {
-        delegate?.masterViewControllerDidRequestPush()
+        delegate?.mainViewControllerDidRequestPush()
     }
 
     @objc private func presentSelected() {
-        delegate?.masterViewControllerDidRequestPresent()
+        delegate?.mainViewControllerDidRequestPresent()
     }
 }
