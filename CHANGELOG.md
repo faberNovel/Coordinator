@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 - Remove support for iOS 10, 11 and 12
 - Remove support for tvOS 10, 11 and 12
 
+### Changed
+
+- Add @MainActor attribute to Coordinator
+- Add @MainActor attribute to NativeNavigator
+
 ## [1.0.2] - 2021-09-10
 
 - Add SPM compatibility

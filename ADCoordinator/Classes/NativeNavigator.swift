@@ -7,8 +7,10 @@
 
 import Foundation
 
+@MainActor
 public protocol NativeNavigator: AnyObject {}
 
+@MainActor
 private enum ContextAssociatedKeys {
     fileprivate static var deallocObserver: UInt8 = 0
 }
