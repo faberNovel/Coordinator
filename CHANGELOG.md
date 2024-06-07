@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Add Support for Swift Concurrency
+
 ### Removed
 
 - Remove support for iOS 10, 11 and 12
