@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'ADCoordinator_Example' do
   pod 'ADCoordinator', :path => '../'
-  pod 'SwiftLint', '~> 0.39'
+  pod 'SwiftLint', '~> 0.53'
 
   target 'ADCoordinator_Tests' do
     inherit! :search_paths
