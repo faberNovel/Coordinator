@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 protocol MasterViewControllerDelegate: AnyObject {
     func masterViewControllerDidRequestPresent()
     func masterViewControllerDidRequestPush()

@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 
 - Add @MainActor attribute to Coordinator
 - Add @MainActor attribute to NativeNavigator
+- Update Example project to pass strict concurrency checks
 
 ## [1.0.2] - 2021-09-10
 
