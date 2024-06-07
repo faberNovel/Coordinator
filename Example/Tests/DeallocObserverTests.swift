@@ -11,6 +11,7 @@ import XCTest
 
 class DeallocObserverTests: XCTestCase {
 
+    @MainActor
     func testDeallocObserver() {
         // Given
         let expectation = self.expectation(description: "observer is deallocated")
@@ -26,6 +27,7 @@ class DeallocObserverTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
 
+    @MainActor
     func testDeallocObserverInvalidation() {
         // Given
         let expectation = self.expectation(description: "observer is deallocated")
