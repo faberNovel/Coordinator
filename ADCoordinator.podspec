@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ADCoordinator'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = 'An implementation of the coordinator pattern used at Fabernovel.'
   s.description      = <<-DESC
 Coordinators are a powerful pattern to decouple the navigation from the view controllers in an app.
