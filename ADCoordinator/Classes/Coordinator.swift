@@ -13,7 +13,7 @@ extension UIViewController: NativeNavigator {}
 
 public typealias NativeNavigatorObject = NativeNavigator & NSObject
 
-@MainActor
+@preconcurrency @MainActor
 open class Coordinator {
 
     /**
