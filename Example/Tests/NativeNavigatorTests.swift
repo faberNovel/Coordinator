@@ -11,6 +11,7 @@ import XCTest
 
 class NativeNavigatorTests: XCTestCase {
 
+    @MainActor
     func testDeallocNativeNavigator() {
         autoreleasepool {
             // Given
@@ -28,6 +29,7 @@ class NativeNavigatorTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
 
+    @MainActor
     func testRemoveDeallocObserver() {
         autoreleasepool {
             // Given

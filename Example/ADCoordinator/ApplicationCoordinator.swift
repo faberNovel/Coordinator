@@ -9,7 +9,7 @@
 import Foundation
 import ADCoordinator
 
-class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
+class ApplicationCoordinator: Coordinator, MainViewControllerDelegate {
 
     // Note the `unowned` keyword here.
     // We do not own the navigation controller, the view hierarchy does.
@@ -22,16 +22,16 @@ class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
     // MARK: - Public
 
     func start() {
-        let viewController = MasterViewController()
+        let viewController = MainViewController()
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: false)
         // Remove self from parent if viewController is deallocated
         bindToLifecycle(of: viewController)
     }
 
-    // MARK: - MasterViewControllerDelegate
+    // MARK: - MainViewControllerDelegate
 
-    func masterViewControllerDidRequestPresent() {
+    func mainViewControllerDidRequestPresent() {
         sanityCheck()
         let navigationController = UINavigationController()
         let coordinator = DetailCoordinator(navigationController: navigationController)
@@ -40,7 +40,7 @@ class ApplicationCoordinator: Coordinator, MasterViewControllerDelegate {
         self.navigationController.present(navigationController, animated: true)
     }
 
-    func masterViewControllerDidRequestPush() {
+    func mainViewControllerDidRequestPush() {
         sanityCheck()
         let coordinator = DetailCoordinator(navigationController: navigationController)
         addChild(coordinator)

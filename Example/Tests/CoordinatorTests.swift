@@ -15,6 +15,7 @@ class ChildCoordinator: Coordinator {}
 
 class CoordinatorTests: XCTestCase {
 
+    @MainActor
     func testAddChild() {
         // Given
         let parent = ParentCoordinator()
@@ -30,6 +31,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(child.parent, parent)
     }
 
+    @MainActor
     func testChildDoNotRetainParent() {
         // Given
         var parent = ParentCoordinator()
@@ -45,6 +47,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertNil(child.parent)
     }
 
+    @MainActor
     func testRemoveChild() {
         // Given
         let parent = ParentCoordinator()
@@ -63,6 +66,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(child2.parent, parent)
     }
 
+    @MainActor
     func testBindToLifecycle() {
         // Given
         let parent = ParentCoordinator()
@@ -82,6 +86,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertTrue(parent.children.isEmpty)
     }
 
+    @MainActor
     func testBindToLifecycleWithOtherObject() {
         // Given
         let viewController2 = UIViewController()
@@ -103,6 +108,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(parent.children, [child])
     }
 
+    @MainActor
     func testBindToLifecycleWithParentChange() {
         // Given
         let parent1 = ParentCoordinator()

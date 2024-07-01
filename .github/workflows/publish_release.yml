@@ -10,11 +10,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.6.5
     - name: Bundle install
-      run: bundle install
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2.2'
+        bundler: "Gemfile.lock"
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Publish release
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_CI }}

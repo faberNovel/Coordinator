@@ -7,8 +7,10 @@
 
 import Foundation
 
+@preconcurrency @MainActor
 public protocol NativeNavigator: AnyObject {}
 
+@preconcurrency @MainActor
 private enum ContextAssociatedKeys {
     fileprivate static var deallocObserver: UInt8 = 0
 }

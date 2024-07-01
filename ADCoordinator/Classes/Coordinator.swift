@@ -13,6 +13,7 @@ extension UIViewController: NativeNavigator {}
 
 public typealias NativeNavigatorObject = NativeNavigator & NSObject
 
+@preconcurrency @MainActor
 open class Coordinator {
 
     /**
@@ -54,7 +55,7 @@ open class Coordinator {
 
 extension Coordinator: Equatable {
 
-    public static func == (lhs: Coordinator, rhs: Coordinator) -> Bool {
+    public nonisolated static func == (lhs: Coordinator, rhs: Coordinator) -> Bool {
         return lhs === rhs
     }
 }
